@@ -1,0 +1,55 @@
+<style>
+  table {
+    border-width: 1px;
+    border-spacing: 2px;
+    border-style: outset;
+    border-color: gray;
+    border-collapse: separate;
+    background-color: white;
+    }
+    
+  table td {
+    border-width: 1px;
+    padding: 1px;
+    border-style: inset;
+    border-color: gray;
+    background-color: white;
+    -moz-border-radius: ;
+}
+    
+</style>
+
+<h1>Thank you!</h1>
+
+<table>
+<tr>
+<% @basicResult.keys.each do |fld| %> 
+ <th> <%= fld %> </th> 
+<% end %>
+</tr>
+
+<tr>
+<% @basicResult.keys.each do |fld| %>
+ <td> <%= @result[fld] %> </td> 
+<% end %>
+</tr>
+</table>
+
+<% @subfieldResult.each_pair do |fld,val| %>
+
+  <p> <%= fld %>: </p>
+  <table>
+    <tr>
+    <% val.first.keys.each do |fld| %>
+       <th> <%= fld %> </th>  
+    <% end %>
+    </tr>
+    
+    <% val.each do |v| %>
+      <tr>
+      <% v.keys.each do |fld| %>
+	<td> <%= v[fld] %> </td> 
+      <% end %>	  </tr>
+    <% end %>
+  </table>
+<% end %>

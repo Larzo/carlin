@@ -1,0 +1,12 @@
+<h1>Programming sample</h1>
+<p>insert JSON snipette here</p>
+
+
+<%= form_tag({ action: 'save'},  format: :json, method: 'post') do %>
+
+   <%= text_area_tag(:json_content, nil, rows:20, cols:40) %>
+  
+  <div class="actions">
+    <%= submit_tag 'save'%>
+  </div>
+<% end %>
