@@ -1,15 +1,26 @@
 
+# module to aid in abstraction of fields to produce 
+# desired result from data derrived from json parse
 module JsonSpecifier
   
+  # top level fields need to be specified here
   def fields(fieldMap)
     @fldMap = fieldMap
     @have_specification = true
   end
   
+  # subfields are of a defined type and 
+  # as well as fields for that type. 
+  # currently only arrays of these types are supported and assumed.
+  
   def subfields(typ, fields)
     @subfieldMap ||= {}
     @subfieldMap[typ] = fields
   end
+  
+  # convert the data to basic types in the definition or to subfield
+  # types. Fields that are not found in the defintion or that 
+  # have the wrong type are ignored.
   
   def json_data_convert(map, json_data)
     result = {}
